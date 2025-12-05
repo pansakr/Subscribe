@@ -1,16 +1,17 @@
 package com.ex.subscribe.orderitem;
 
-import com.ex.common.BaseEntity;
+import com.ex.subscribe.global.jpa.BaseEntity;
 import com.ex.subscribe.order.OrderEntity;
 import com.ex.subscribe.item.ItemEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "order_items")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItemEntity extends BaseEntity {
 
     @Id

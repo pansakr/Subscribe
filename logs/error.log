@@ -1,0 +1,4 @@
+2025-12-06 00:08:47.190 [http-nio-8080-exec-3] ERROR [aa0f4f3d] c.e.s.global.logging.LoggingAop - [Error] com.ex.subscribe.user.DefaultUserService#signUp ex=com.ex.subscribe.user.UserException
+2025-12-06 00:08:47.198 [http-nio-8080-exec-3] ERROR [aa0f4f3d] c.e.s.global.logging.LoggingAop - [Error] com.ex.subscribe.user.UserRestController#signUp ex=com.ex.subscribe.user.UserException
+2025-12-06 00:08:51.033 [http-nio-8080-exec-4] ERROR [0342dd6e] c.e.s.global.logging.LoggingAop - [Error] com.ex.subscribe.user.DefaultUserService#signUp ex=com.ex.subscribe.user.UserException
+2025-12-06 00:08:51.034 [http-nio-8080-exec-4] ERROR [0342dd6e] c.e.s.global.logging.LoggingAop - [Error] com.ex.subscribe.user.UserRestController#signUp ex=com.ex.subscribe.user.UserException

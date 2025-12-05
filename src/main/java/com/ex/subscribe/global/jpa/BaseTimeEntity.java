@@ -1,4 +1,4 @@
-package com.ex.common;
+package com.ex.subscribe.global.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.OffsetDateTime;
 
 @EntityListeners(AuditingEntityListener.class)
@@ -15,10 +16,10 @@ public class BaseTimeEntity{
 
     @CreatedDate
     @Column(name = "created_at")
-    private OffsetDateTime createdDate;
+    private Instant createdDate;
 
     @LastModifiedDate
     @Column(name = "modified_at")
-    private OffsetDateTime modifiedDate;
+    private Instant modifiedDate;
 
 }

@@ -1,4 +1,4 @@
-package com.ex.config;
+package com.ex.subscribe.global.jpa;
 
 
 import org.springframework.data.domain.AuditorAware;

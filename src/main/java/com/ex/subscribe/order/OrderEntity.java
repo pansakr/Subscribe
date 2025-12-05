@@ -1,17 +1,18 @@
 package com.ex.subscribe.order;
 
-import com.ex.common.BaseEntity;
+import com.ex.subscribe.global.jpa.BaseEntity;
 import com.ex.subscribe.user.UserEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "orders")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderEntity extends BaseEntity {
 
     @Id

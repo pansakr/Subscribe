@@ -1,21 +1,5 @@
 spring:
   application:
-    name=subscribe
-
-  # Database
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/subscribe
-    username: csadmin
-    password: 123$
-
-  # JPA
-  jpa:
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: validate
-
-    show-sql: true
-    generate-ddl: off
-    open-in-view: false
+    name: subscribe
+  profiles:
+    active: local

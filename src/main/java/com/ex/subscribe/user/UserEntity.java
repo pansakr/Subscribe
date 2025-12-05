@@ -1,14 +1,13 @@
 package com.ex.subscribe.user;
 
-import com.ex.common.BaseTimeEntity;
+import com.ex.subscribe.global.jpa.BaseTimeEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity extends BaseTimeEntity {
 
     @Id
@@ -25,7 +24,7 @@ public class UserEntity extends BaseTimeEntity {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(length = 100)
+    @Column(nullable = false, length = 100)
     private String address;
 
     @Column(nullable = false)
@@ -38,4 +37,14 @@ public class UserEntity extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private UserStatus status;
+
+    public UserEntity(String email, String password, String name, String address, String phone, UserRole role, UserStatus status){
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.role = role;
+        this.status = status;
+    }
 }

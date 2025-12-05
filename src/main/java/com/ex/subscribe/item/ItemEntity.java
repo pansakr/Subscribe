@@ -1,14 +1,15 @@
 package com.ex.subscribe.item;
 
-import com.ex.common.BaseEntity;
+import com.ex.subscribe.global.jpa.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "items")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ItemEntity extends BaseEntity {
 
     @Id

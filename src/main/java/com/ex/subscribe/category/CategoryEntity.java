@@ -1,14 +1,12 @@
 package com.ex.subscribe.category;
 
-import com.ex.common.BaseEntity;
+import com.ex.subscribe.global.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "categories")
 @Getter
-@Setter
 public class CategoryEntity extends BaseEntity {
 
     @Id

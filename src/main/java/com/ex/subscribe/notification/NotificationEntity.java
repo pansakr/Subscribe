@@ -3,13 +3,15 @@ package com.ex.subscribe.notification;
 import com.ex.subscribe.notificationtem.NotificationTemplateEntity;
 import com.ex.subscribe.user.UserEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "notifications")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class NotificationEntity {
 
     @Id

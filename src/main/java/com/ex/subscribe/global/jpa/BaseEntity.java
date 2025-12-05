@@ -1,4 +1,4 @@
-package com.ex.common;
+package com.ex.subscribe.global.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
