@@ -2,6 +2,7 @@ package com.ex.subscribe.global.exception;
 
 import com.ex.subscribe.user.UserException;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,6 +14,7 @@ import java.util.List;
 
 
 @RestControllerAdvice(annotations = RestController.class)
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -41,9 +43,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> exception(Exception e, HttpServletRequest request){
+
+        log.error("[Exception] {} {} {}", request.getMethod(), request.getRequestURI(), e.getMessage(), e);
+
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(ErrorResponse.of(BusinessErrorCode.INVALID_INPUT_VALUE, request.getRequestURI()));
+                .status(BusinessErrorCode.INTERNAL_SERVER_ERROR.getHttpStatus())
+                .body(ErrorResponse.of(BusinessErrorCode.INTERNAL_SERVER_ERROR, request.getRequestURI()));
     }
 
 }
