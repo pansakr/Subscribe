@@ -15,8 +15,14 @@ public class DefaultUserService implements UserService {
     private final PasswordEncoder encoder;
 
     /**
-     * request : 사용자가 입력한 가입 정보
-     * DB 조회 후 값이 없다면 가입, 값이 있다면 예외
+     * 회원가입 기능
+     * <p></p>
+     * 이메일과 휴대폰 번호가 중복되는지 검증한 뒤,
+     * 중복이 없으면 가입을 진행하고, 중복이 있을 경우 있다면 예외를 발생시킨다
+     *
+     * @param request 가입 요청 정보
+     * @return 가입 완료된 회원 정보 응답
+     * @throws UserException 이메일 또는 휴대폰 번호가 중복된 경우
      */
     @Transactional
     @Override
@@ -30,7 +36,10 @@ public class DefaultUserService implements UserService {
     }
 
     /**
-     * 검증 : 사용자가 입력한 가입 정보가 DB에 있으면 true
+     * 회원가입 요청의 이메일과 휴대폰 번호의 중복 여부를 검증
+     *
+     * @param request 가입 요청 정보
+     * @throws UserException 이메일 또는 휴대폰 번호가 중복된 경우
      */
     private void validate(UserRequest request){
 
