@@ -1,0 +1,82 @@
+/* ========================================================================
+   1. 에러 페이지 공통 레이아웃
+   ======================================================================== */
+
+.error-wrapper {
+    padding: 80px 20px;
+}
+
+.error-wrapper .container {
+    display: flex;
+    justify-content: center;
+}
+
+/* ========================================================================
+   2. 에러 카드 (500, 404 등 공통으로 재사용 가능)
+   ======================================================================== */
+
+.error-card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.error-code {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.error-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+}
+
+/* ========================================================================
+   3. 버튼 영역
+   ======================================================================== */
+
+.error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.error-btn-main,
+.error-btn-sub {
+    min-width: 150px;
+}
+
+/* ========================================================================
+   4. 상세 정보 (traceId 등)
+   ======================================================================== */
+
+.error-detail {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ========================================================================
+   5. 반응형
+   ======================================================================== */
+
+@media (max-width: 480px) {
+    .error-card {
+        padding: 24px 18px;
+    }
+}

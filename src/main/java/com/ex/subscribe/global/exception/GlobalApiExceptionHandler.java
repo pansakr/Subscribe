@@ -3,7 +3,6 @@ package com.ex.subscribe.global.exception;
 import com.ex.subscribe.user.UserException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @RestControllerAdvice(annotations = RestController.class)
 @Slf4j
-public class GlobalExceptionHandler {
+public class GlobalApiExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> validException(MethodArgumentNotValidException e, HttpServletRequest request){

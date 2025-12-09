@@ -1,7 +1,7 @@
 package com.ex.subscribe.user;
 
 import com.ex.subscribe.global.exception.BusinessErrorCode;
-import com.ex.subscribe.global.exception.GlobalExceptionHandler;
+import com.ex.subscribe.global.exception.GlobalApiExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = UserRestController.class)
-@Import(GlobalExceptionHandler.class)
+@Import(GlobalApiExceptionHandler.class)
 @AutoConfigureMockMvc(addFilters = false)
 class UserRestControllerTest {
 

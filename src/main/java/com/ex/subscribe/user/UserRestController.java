@@ -19,7 +19,7 @@ public class UserRestController {
      * @param request 사용자가 입력한 가입 정보
      * @return 가입 완료된 회원 정보(json)
      */
-    @PostMapping("/users")
+    @PostMapping("/api/users")
     public ResponseEntity<UserResponse> signUp(@Validated @RequestBody UserRequest request){
 
         return ResponseEntity

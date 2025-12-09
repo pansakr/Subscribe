@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle} ?: 'SubTrack'">SubTrack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 외부 CSS -->
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/auth.css}"/>
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>
+</head>
+
+<body>
+
+<header class="container">
+    <div class="logo">
+        <div class="logo-mark"></div>
+        SubTrack
+    </div>
+
+    <nav class="nav">
+        <a th:href="@{/about}">서비스 소개</a>
+        <a th:href="@{/ranking}">랭킹</a>
+        <button class="btn-login" onclick="location.href='/login'">로그인</button>
+    </nav>
+</header>
+
+<main>
+    <div th:insert="${content}"></div>
+</main>
+
+<footer>
+    © 2025 SubTrack — 구독 관리 서비스
+</footer>
+
+<script th:src="@{/js/main.js}" defer></script>
+<script th:src="@{/js/modal.js}"></script>
+</body>
+</html>

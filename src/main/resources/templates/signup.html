@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::content})}">
+
+<th:block th:fragment="content">
+
+    <section class="auth-wrapper">
+        <div class="container">
+            <div class="auth-card">
+
+                <h1 class="auth-title">회원가입</h1>
+                <p class="auth-subtitle">
+                    사용 중인 구독 서비스를 등록하고,<br>
+                    이번 달 구독료와 자동 결제일을 한눈에 확인해 보세요.
+                </p>
+
+                <form th:action="@{/users}" th:object="${userRequest}" method="post">
+                    <div class="form-row">
+
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" th:field="*{email}" placeholder="example@domain.com" required>
+
+                        <div th:if="${#fields.hasErrors('email')}"
+                             th:errors="*{email}" class="field-error">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" th:field="*{password}" placeholder="영문, 숫자를 포함해서 입력해 주세요" required>
+
+                        <div th:if="${#fields.hasErrors('password')}"
+                             th:errors="*{password}" class="field-error">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <label for="name">이름</label>
+                        <input type="text" id="name" th:field="*{name}" placeholder="이름을 입력해 주세요" required>
+
+                        <div th:if="${#fields.hasErrors('name')}"
+                             th:errors="*{name}" class="field-error">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <label for="address">주소</label>
+                        <input type="text" id="address" th:field="*{address}" placeholder="주소를 입력해 주세요" required>
+
+                        <div th:if="${#fields.hasErrors('address')}"
+                             th:errors="*{address}" class="field-error">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <label for="phone">휴대폰 번호</label>
+                        <input type="tel" id="phone" th:field="*{phone}" placeholder="- 을 제외하고 입력해 주세요" required>
+
+                        <div th:if="${#fields.hasErrors('phone')}"
+                             th:errors="*{phone}" class="field-error">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">
+                        회원가입 완료
+                    </button>
+
+                    <p class="auth-footnote">
+                        이미 가입하셨나요?
+                        <a th:href="@{/login}">로그인 하러가기</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</th:block>
+</html>

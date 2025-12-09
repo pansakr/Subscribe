@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::content})}">
+
+<th:block th:fragment="content">
+
+    <!-- 회원가입 성공 모달 -->
+    <div th:if="${msgCode}" class="modal-overlay">
+        <div class="modal-box signup-modal">
+            <div class="modal-icon">
+                <span>&#10003;</span> <!-- 체크 아이콘 -->
+            </div>
+
+            <h2 class="modal-title" th:text="#{${msgCode}}"></h2>
+
+            <button class="modal-button" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
+    <!-- 히어로 영역 -->
+    <section class="hero container">
+        <h1>
+            당신의 모든 <span>구독</span>을<br>
+            한 화면에서 관리하세요.
+        </h1>
+        <p>
+            여러 서비스에서 빠져나가는 구독료를 한 번에 정리하고, 자동 결제일 알림까지 받아보세요.
+            <br>더 이상 새는 구독료에 고민하지 않아도 됩니다.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="location.href='/users'">회원가입</button>
+            <button class="btn-outline" onclick="location.href='/ranking'">인기 구독 랭킹 보기</button>
+            <button class="btn-outline" onclick="location.href='/about'">서비스 소개</button>
+        </div>
+    </section>
+
+    <!-- 기능 설명 섹션 -->
+    <section class="section container">
+        <h2>SubTrack으로 할 수 있는 일</h2>
+
+        <div class="features">
+            <div class="feature">
+                <h3>월 예상 구독료 계산</h3>
+                <p>등록한 구독 데이터를 기반으로 이번 달·다음 달 구독료를 자동 계산합니다.</p>
+            </div>
+
+            <div class="feature">
+                <h3>자동 결제일 알림</h3>
+                <p>설정된 날짜 전에 알림을 받아 취소 시기를 놓치지 않습니다.</p>
+            </div>
+
+            <div class="feature">
+                <h3>구독 정리 기준 제공</h3>
+                <p>사용 빈도가 낮은 구독을 찾아 정리할 수 있도록 도와줍니다.</p>
+            </div>
+        </div>
+
+        <!-- 랭킹 미리보기 -->
+        <div class="ranking-preview">
+            <h3>인기 구독 서비스 TOP 3</h3>
+            <p class="ranking-description">
+                실제 데이터는 랭킹 페이지 및 회원 구독 정보와 연동하여 표시할 수 있습니다.
+            </p>
+
+            <div class="rank-list">
+                <div class="rank-item">
+                    <div class="rank-left">
+                        <div class="rank-number top">1</div>
+                        <div>
+                            <div class="rank-name">넷플릭스 (Netflix)</div>
+                            <div class="rank-category">영상 스트리밍</div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <strong>₩ 17,000</strong> / 월
+                    </div>
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-left">
+                        <div class="rank-number">2</div>
+                        <div>
+                            <div class="rank-name">유튜브 프리미엄</div>
+                            <div class="rank-category">영상 · 음악</div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <strong>₩ 10,450</strong> / 월
+                    </div>
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-left">
+                        <div class="rank-number">3</div>
+                        <div>
+                            <div class="rank-name">멜론</div>
+                            <div class="rank-category">음악 스트리밍</div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <strong>₩ 10,900</strong> / 월
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

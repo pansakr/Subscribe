@@ -1,0 +1,111 @@
+/* ========================================================================
+   1. 인증 페이지 레이아웃 (회원가입 / 로그인 공통)
+   ======================================================================== */
+
+.auth-wrapper {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+}
+
+.auth-wrapper .container {
+    display: flex;
+    justify-content: center;
+}
+
+/* ========================================================================
+   2. 인증 카드 (회원가입 / 로그인)
+   ======================================================================== */
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+}
+
+.auth-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+}
+
+/* ========================================================================
+   3. 폼 요소 스타일
+   ======================================================================== */
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 0.9rem;
+}
+
+.form-row label {
+    color: var(--text);
+}
+
+.form-row input {
+    padding: 9px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: #020617;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.form-row input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* 검증 에러 메시지 */
+.field-error {
+    margin-top: 4px;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: #f97373;
+}
+
+
+/* 100% 가로 버튼 */
+.btn-full {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 하단 안내 문구 */
+.auth-footnote {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.auth-footnote a {
+    color: var(--primary);
+}
+
+/* ========================================================================
+   4. 반응형
+   ======================================================================== */
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 24px 18px;
+    }
+}
