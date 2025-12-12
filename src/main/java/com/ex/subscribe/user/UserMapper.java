@@ -1,5 +1,10 @@
 package com.ex.subscribe.user;
 
+import com.ex.subscribe.user.dto.UserRequest;
+import com.ex.subscribe.user.dto.UserResponse;
+import com.ex.subscribe.user.entity.UserEntity;
+import com.ex.subscribe.user.entity.UserRole;
+import com.ex.subscribe.user.entity.UserStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserMapper {

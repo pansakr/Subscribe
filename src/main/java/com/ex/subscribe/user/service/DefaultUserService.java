@@ -1,6 +1,14 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.service;
 
 import com.ex.subscribe.global.exception.BusinessErrorCode;
+import com.ex.subscribe.user.UserException;
+import com.ex.subscribe.user.UserMapper;
+import com.ex.subscribe.user.dto.EmailCheckResponse;
+import com.ex.subscribe.user.dto.UserRequest;
+import com.ex.subscribe.user.dto.UserResponse;
+import com.ex.subscribe.user.repository.UserQueryRepository;
+import com.ex.subscribe.user.repository.UserRepository;
+import com.ex.subscribe.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

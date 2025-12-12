@@ -1,4 +1,4 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

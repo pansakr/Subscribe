@@ -1,7 +1,7 @@
 package com.ex.subscribe.order;
 
 import com.ex.subscribe.global.jpa.BaseEntity;
-import com.ex.subscribe.user.UserEntity;
+import com.ex.subscribe.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

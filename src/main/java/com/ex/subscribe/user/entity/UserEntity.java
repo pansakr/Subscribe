@@ -1,4 +1,4 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.entity;
 
 import com.ex.subscribe.global.jpa.BaseTimeEntity;
 import jakarta.persistence.*;

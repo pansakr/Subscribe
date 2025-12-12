@@ -1,4 +1,4 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

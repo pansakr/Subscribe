@@ -1,6 +1,11 @@
 package com.ex.subscribe.user;
 
 import com.ex.subscribe.global.jpa.JpaConfig;
+import com.ex.subscribe.user.entity.UserEntity;
+import com.ex.subscribe.user.entity.UserRole;
+import com.ex.subscribe.user.entity.UserStatus;
+import com.ex.subscribe.user.repository.UserQueryRepository;
+import com.ex.subscribe.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

@@ -1,5 +1,6 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.repository;
 
+import com.ex.subscribe.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {

@@ -1,4 +1,4 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.dto;
 
 import lombok.Getter;
 

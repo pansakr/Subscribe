@@ -1,5 +1,7 @@
-package com.ex.subscribe.user;
+package com.ex.subscribe.user.view;
 
+import com.ex.subscribe.user.dto.UserRequest;
+import com.ex.subscribe.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

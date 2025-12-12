@@ -2,6 +2,10 @@ package com.ex.subscribe.user;
 
 import com.ex.subscribe.global.exception.BusinessErrorCode;
 import com.ex.subscribe.global.exception.GlobalApiExceptionHandler;
+import com.ex.subscribe.user.api.UserApiController;
+import com.ex.subscribe.user.dto.UserRequest;
+import com.ex.subscribe.user.dto.UserResponse;
+import com.ex.subscribe.user.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,10 +22,10 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = UserRestController.class)
+@WebMvcTest(controllers = UserApiController.class)
 @Import(GlobalApiExceptionHandler.class)
 @AutoConfigureMockMvc(addFilters = false)
-class UserRestControllerTest {
+class UserApiControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

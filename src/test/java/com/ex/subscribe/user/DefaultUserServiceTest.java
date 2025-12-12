@@ -1,6 +1,14 @@
 package com.ex.subscribe.user;
 
 import com.ex.subscribe.global.exception.BusinessErrorCode;
+import com.ex.subscribe.user.dto.UserRequest;
+import com.ex.subscribe.user.dto.UserResponse;
+import com.ex.subscribe.user.entity.UserEntity;
+import com.ex.subscribe.user.entity.UserRole;
+import com.ex.subscribe.user.entity.UserStatus;
+import com.ex.subscribe.user.repository.UserQueryRepository;
+import com.ex.subscribe.user.repository.UserRepository;
+import com.ex.subscribe.user.service.DefaultUserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

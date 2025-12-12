@@ -1,12 +1,11 @@
 package com.ex.subscribe.serviceplan;
 
-import com.ex.subscribe.user.UserEntity;
+import com.ex.subscribe.user.entity.UserEntity;
 import com.ex.subscribe.item.ItemEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.OffsetDateTime;
 
