@@ -1,5 +1,6 @@
 package com.ex.subscribe.user;
 
+import com.ex.subscribe.global.validation.ValidEmail;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserRequest {
 
-    @NotBlank(message = "이메일을 입력하세요")
-    @Email(message = "이메일 형식이 올바르지 않습니다")
+    @ValidEmail
     private String email;
 
     @NotBlank(message = "비밀번호를 입력하세요")

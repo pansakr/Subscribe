@@ -3,11 +3,13 @@ package com.ex.subscribe.global.exception;
 import com.ex.subscribe.user.UserException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
 public class GlobalApiExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> validException(MethodArgumentNotValidException e, HttpServletRequest request){
+    public ResponseEntity<ErrorResponse> methodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request){
 
         List<FieldErrorResponse> fieldErrors = e.getBindingResult().getFieldErrors()
                                             .stream()
@@ -26,6 +28,23 @@ public class GlobalApiExceptionHandler {
                                                     error.getDefaultMessage()
                                             ))
                                             .toList();
+
+        return ResponseEntity
+                .status(e.getStatusCode())
+                .body(ErrorResponse.of(BusinessErrorCode.INVALID_INPUT_VALUE, request.getRequestURI(), fieldErrors));
+    }
+
+    @ExceptionHandler(HandlerMethodValidationException.class)
+    public ResponseEntity<ErrorResponse> handlerMethodValidationException(HandlerMethodValidationException e, HttpServletRequest request){
+
+        List<? extends MessageSourceResolvable> errors = e.getAllErrors();
+
+        List<FieldErrorResponse> fieldErrors = errors.stream()
+                .map(error -> new FieldErrorResponse(
+                        "email",
+                        error.getDefaultMessage()
+                ))
+                .toList();
 
         return ResponseEntity
                 .status(e.getStatusCode())

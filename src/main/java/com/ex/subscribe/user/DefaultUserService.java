@@ -35,6 +35,19 @@ public class DefaultUserService implements UserService {
         );
     }
 
+    @Transactional
+    @Override
+    public EmailCheckResponse checkEmail(String email) {
+
+        if (userQueryRepository.existsByEmail(email))
+            throw new UserException(BusinessErrorCode.EMAIL_DUPLICATED);
+
+        return EmailCheckResponse.success();
+    }
+
+
+
+
     /**
      * 회원가입 요청의 이메일과 휴대폰 번호의 중복 여부를 검증
      *

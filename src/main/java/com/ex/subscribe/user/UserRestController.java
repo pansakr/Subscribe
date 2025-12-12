@@ -1,12 +1,11 @@
 package com.ex.subscribe.user;
 
+import com.ex.subscribe.global.validation.ValidEmail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +24,17 @@ public class UserRestController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userService.signUp(request));
+    }
+
+    /**
+     * 이메일 중복 확인 API
+     */
+    @GetMapping("/api/users/{email}")
+    public ResponseEntity<EmailCheckResponse> emailCheck(@PathVariable(name = "email") @ValidEmail String email){
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(userService.checkEmail(email));
     }
 
 }
