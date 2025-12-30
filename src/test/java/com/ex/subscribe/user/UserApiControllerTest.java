@@ -61,7 +61,7 @@ class UserApiControllerTest {
         String json = objectMapper.writeValueAsString(request);
 
         // when & then
-        mockMvc.perform(post("/users")
+        mockMvc.perform(post("/api/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
 
@@ -92,7 +92,7 @@ class UserApiControllerTest {
         String json = objectMapper.writeValueAsString(request);
 
         // when & then
-        mockMvc.perform(post("/users")
+        mockMvc.perform(post("/api/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
 

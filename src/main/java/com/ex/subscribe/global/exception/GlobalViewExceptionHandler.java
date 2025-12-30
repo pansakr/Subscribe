@@ -15,6 +15,6 @@ public class GlobalViewExceptionHandler {
 
       log.error("[Exception] {} {} {} ", request.getMethod(), request.getRequestURI(), e.getMessage(), e);
 
-      return "error/500";
+      return "error/5xx";
     }
 }

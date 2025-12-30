@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::content})}">
+
+<th:block th:fragment="content">
+
+    <section class="auth-wrapper">
+        <div class="container">
+            <div class="auth-card">
+
+                <h1 class="auth-title">로그인</h1>
+                <p class="auth-subtitle">
+                    SubTrack에 로그인하고<br>
+                    구독 현황과 결제일을 한눈에 관리해 보세요.
+                </p>
+
+                <!-- 이메일 로그인 -->
+                <form th:action="@{/login}" method="post" class="auth-form">
+
+                    <div class="form-row">
+                        <label for="email">이메일</label>
+                        <input type="email"
+                               id="email"
+                               name="username"
+                               placeholder="example@domain.com"
+                               required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">비밀번호</label>
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               placeholder="비밀번호를 입력해 주세요"
+                               required>
+                    </div>
+
+                    <!-- 로그인 실패 -->
+                    <div th:if="${param.error}" class="field-error">
+                        이메일 또는 비밀번호가 올바르지 않습니다.
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">
+                        로그인
+                    </button>
+
+                    <div class="auth-actions">
+                        <label class="remember">
+                            <input type="checkbox" name="remember-me">
+                            로그인 상태 유지
+                        </label>
+
+                        <a class="link-muted" th:href="@{/password/find}">
+                            비밀번호 찾기
+                        </a>
+                    </div>
+                </form>
+
+                <!-- 구분선 -->
+                <div class="divider">
+                    <span>또는</span>
+                </div>
+
+                <!-- 소셜 로그인 -->
+                <div class="social-login">
+                    <a class="btn-social btn-google"
+                       th:href="@{/oauth2/authorization/google}">
+                        <span class="social-icon">G</span>
+                        Google로 로그인
+                    </a>
+
+                    <a class="btn-social btn-naver"
+                       th:href="@{/oauth2/authorization/naver}">
+                        <span class="social-icon">N</span>
+                        Naver로 로그인
+                    </a>
+                </div>
+
+                <p class="auth-footnote">
+                    아직 회원이 아니신가요?
+                    <a th:href="@{/users}">회원가입 하러가기</a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 로그인 실패 모달 (messageKey 있을 때만) -->
+    <div th:if="${param.messageKey}" class="modal-overlay" id="login-error-modal" aria-hidden="false">
+        <div class="modal-box signup-modal login-modal" role="dialog" aria-modal="true" aria-labelledby="loginErrorTitle">
+            <div class="modal-icon">
+                <span>!</span>
+            </div>
+
+            <p class="modal-message"
+               th:text="#{${param.messageKey}}">
+            </p>
+
+            <button type="button" class="modal-button" id="btn-login-error-ok">
+                확인
+            </button>
+        </div>
+    </div>
+
+</th:block>
+</html>

@@ -25,6 +25,14 @@ spring:
     generate-ddl: false
     open-in-view: false
 
+  config:
+    import: optional:classpath:application-local-secret.yml
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    access-minutes: 30
+
 logging:
   file:
     path: ./logs

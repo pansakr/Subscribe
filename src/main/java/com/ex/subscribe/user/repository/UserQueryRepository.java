@@ -2,10 +2,10 @@ package com.ex.subscribe.user.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import static com.ex.subscribe.user.entity.QUserEntity.userEntity;
 
-
-import static com.ex.subscribe.user.QUserEntity.userEntity;
 
 @Repository
 @RequiredArgsConstructor

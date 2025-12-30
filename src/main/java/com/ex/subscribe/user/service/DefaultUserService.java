@@ -8,8 +8,8 @@ import com.ex.subscribe.user.dto.UserRequest;
 import com.ex.subscribe.user.dto.UserResponse;
 import com.ex.subscribe.user.repository.UserQueryRepository;
 import com.ex.subscribe.user.repository.UserRepository;
-import com.ex.subscribe.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +26,7 @@ public class DefaultUserService implements UserService {
      * 회원가입 기능
      * <p></p>
      * 이메일과 휴대폰 번호가 중복되는지 검증한 뒤,
-     * 중복이 없으면 가입을 진행하고, 중복이 있을 경우 있다면 예외를 발생시킨다
+     * 중복이 없으면 가입을 진행하고, 중복이 있을 경우 있다면 예외 발생
      *
      * @param request 가입 요청 정보
      * @return 가입 완료된 회원 정보 응답
@@ -36,7 +36,7 @@ public class DefaultUserService implements UserService {
     @Override
     public UserResponse signUp(UserRequest request) {
 
-        validate(request);
+        signUpValidate(request);
 
         return UserMapper.toResponse(
                 userRepository.save(UserMapper.toEntity(request, encoder))
@@ -46,23 +46,19 @@ public class DefaultUserService implements UserService {
     @Transactional
     @Override
     public EmailCheckResponse checkEmail(String email) {
-
-        if (userQueryRepository.existsByEmail(email))
-            throw new UserException(BusinessErrorCode.EMAIL_DUPLICATED);
-
-        return EmailCheckResponse.success();
+        return userQueryRepository.existsByEmail(email) ?
+                EmailCheckResponse.success() :
+                EmailCheckResponse.fail();
     }
 
 
-
-
     /**
-     * 회원가입 요청의 이메일과 휴대폰 번호의 중복 여부를 검증
+     * 회원가입 요청의 이메일과 휴대폰 번호의 중복 여부 검증
      *
      * @param request 가입 요청 정보
      * @throws UserException 이메일 또는 휴대폰 번호가 중복된 경우
      */
-    private void validate(UserRequest request){
+    private void signUpValidate(UserRequest request){
 
         if (userQueryRepository.existsByEmail(request.getEmail()))
             throw new UserException(BusinessErrorCode.EMAIL_DUPLICATED);

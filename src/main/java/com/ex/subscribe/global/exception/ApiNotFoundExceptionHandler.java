@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+/**
+ * 404 전용 예외 처리 클래스
+ * 404 는 매칭된 컨트롤러를 찾지 못했을때 발생한 예외이므로 annotations = .. 옵션이 있는 예외 핸들러는 건너뜀
+ */
 @RestControllerAdvice
 @Slf4j
 public class ApiNotFoundExceptionHandler {

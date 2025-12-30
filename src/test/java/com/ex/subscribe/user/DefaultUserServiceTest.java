@@ -57,7 +57,7 @@ class DefaultUserServiceTest {
                 request.getName(),
                 request.getAddress(),
                 request.getPhone(),
-                UserRole.USER,
+                UserRole.ROLE_USER,
                 UserStatus.ACTIVE);
 
         given(userRepository.save(any(UserEntity.class))).willReturn(userEntity);

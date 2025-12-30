@@ -5,6 +5,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 logs/
+src/main/resources/application-local-secret.yml
 
 ### STS ###
 .apt_generated

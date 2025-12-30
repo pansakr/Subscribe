@@ -37,7 +37,7 @@ class UserQueryRepositoryTest {
                 "testName",
                 "testAddress",
                 "01012345678",
-                UserRole.USER,
+                UserRole.ROLE_USER,
                 UserStatus.ACTIVE
         );
         userRepository.save(userEntity);
@@ -71,7 +71,7 @@ class UserQueryRepositoryTest {
                 "testName",
                 "testAddress",
                 "01012345678",
-                UserRole.USER,
+                UserRole.ROLE_USER,
                 UserStatus.ACTIVE
         );
         userRepository.save(userEntity);

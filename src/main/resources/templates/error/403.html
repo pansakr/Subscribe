@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::content})}">
+
+<th:block th:fragment="content">
+
+    <section class="error-wrapper">
+        <div class="container">
+            <div class="error-card">
+                <div class="error-code">403</div>
+                <h1 class="error-title">서비스 이용 중 오류가 발생했어요</h1>
+                <p class="error-message">
+                    잘못된 요청입니다<br>
+                </p>
+
+                <div class="error-actions">
+                    <a th:href="@{/}" class="btn-primary error-btn-main">홈으로 돌아가기</a>
+                </div>
+
+                <p class="error-detail" th:if="${traceId != null}">
+                    오류 추적 ID: <span th:text="${traceId}">abc12345</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</th:block>
+</html>

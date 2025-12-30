@@ -33,8 +33,8 @@ public class UserApiController {
     /**
      * 이메일 중복 확인 API
      */
-    @GetMapping("/api/users/{email}")
-    public ResponseEntity<EmailCheckResponse> emailCheck(@PathVariable(name = "email") @ValidEmail String email){
+    @GetMapping("/api/users/exists")
+    public ResponseEntity<EmailCheckResponse> emailCheck(@RequestParam("email") @ValidEmail String email){
 
         return ResponseEntity
                 .status(HttpStatus.OK)

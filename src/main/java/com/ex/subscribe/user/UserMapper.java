@@ -16,7 +16,7 @@ public class UserMapper {
                 request.getName(),
                 request.getAddress(),
                 request.getPhone(),
-                UserRole.USER,
+                UserRole.ROLE_USER,
                 UserStatus.ACTIVE
         );
     }

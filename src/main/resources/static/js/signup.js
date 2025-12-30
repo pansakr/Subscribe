@@ -38,29 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
         checkButton.textContent = "확인중...";
 
         try {
-            const response = await fetch(`/api/users/${encodeURIComponent(email)}`);
+            const response = await fetch(
+                `/api/users/exists?email=${encodeURIComponent(email)}`);
 
-            if (response.ok) {
-                // ★ 사용 가능 응답 (available = false 라는 현재 구조 유지)
-                const data = await response.json();
+            if (!response.ok) {
+                messageBox.textContent = "중복 확인 중 오류가 발생했습니다.";
+                messageBox.classList.add("hint-error");
+                return;
+            }
 
-                if (data.available === false) {
-                    messageBox.textContent = "사용 가능한 이메일입니다.";
-                    messageBox.classList.add("hint-success");
-                } else {
-                    messageBox.textContent = "이미 사용 중인 이메일입니다.";
-                    messageBox.classList.add("hint-error");
-                }
+            const data = await response.json();
+
+            if (data.exists === true) {
+                messageBox.textContent = "사용 가능한 이메일입니다.";
+                messageBox.classList.add("hint-success");
             } else {
-                // ★ 예외 발생 → 이메일 중복 또는 기타 오류
-                const error = await response.json();
-
-                if (error.code === "EMAIL_DUPLICATED") {
-                    messageBox.textContent = "이미 사용 중인 이메일입니다.";
-                } else {
-                    messageBox.textContent = error.message || "중복 확인 중 오류가 발생했습니다.";
-                }
-
+                messageBox.textContent = "이미 사용 중인 이메일입니다.";
                 messageBox.classList.add("hint-error");
             }
 
