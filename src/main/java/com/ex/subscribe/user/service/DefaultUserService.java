@@ -9,7 +9,6 @@ import com.ex.subscribe.user.dto.UserResponse;
 import com.ex.subscribe.user.repository.UserQueryRepository;
 import com.ex.subscribe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,8 +46,8 @@ public class DefaultUserService implements UserService {
     @Override
     public EmailCheckResponse checkEmail(String email) {
         return userQueryRepository.existsByEmail(email) ?
-                EmailCheckResponse.success() :
-                EmailCheckResponse.fail();
+                EmailCheckResponse.unavailable() :
+                EmailCheckResponse.available();
     }
 
 

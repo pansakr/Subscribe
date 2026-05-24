@@ -77,8 +77,10 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/login", "/oauth2/**",
-                                "/css/**", "/js/**", "/images/**")
+                                "/css/**", "/js/**", "/images/**", "/favicon.ico")
                         .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
 
                         .requestMatchers("/mypage")
                         .hasRole("ADMIN")

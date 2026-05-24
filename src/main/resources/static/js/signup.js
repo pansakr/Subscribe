@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
 
-            if (data.exists === true) {
+            if (data.available === true) {
                 messageBox.textContent = "사용 가능한 이메일입니다.";
                 messageBox.classList.add("hint-success");
             } else {

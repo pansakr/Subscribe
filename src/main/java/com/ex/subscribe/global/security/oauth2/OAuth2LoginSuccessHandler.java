@@ -29,6 +29,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         String accessToken = jwtTokenProvider.createAccessToken(
                 principal.getUserId(),
+                principal.getEmail(),
                 principal.getRoles());
 
         ResponseCookie cookie = ResponseCookie.from("ACCESS_TOKEN", accessToken)

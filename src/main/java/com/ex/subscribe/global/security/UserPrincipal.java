@@ -12,6 +12,7 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {
 
     private final Long userId;
+    private final String email;
 
     @Getter
     private final List<String> roles;

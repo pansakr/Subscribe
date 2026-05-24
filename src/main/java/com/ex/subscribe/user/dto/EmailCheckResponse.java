@@ -5,17 +5,17 @@ import lombok.Getter;
 @Getter
 public class EmailCheckResponse {
 
-    private final boolean exists;
+    private final boolean available;
 
-    private EmailCheckResponse(boolean exists){
-        this.exists = exists;
+    private EmailCheckResponse(boolean available){
+        this.available = available;
     }
 
-    public static EmailCheckResponse success(){
+    public static EmailCheckResponse unavailable(){
         return new EmailCheckResponse(false);
     }
 
-    public static EmailCheckResponse fail() {
+    public static EmailCheckResponse available() {
         return new EmailCheckResponse(true);
     }
 }

@@ -5,6 +5,43 @@
 
 <th:block th:fragment="content">
 
+    <style>
+        /* 상단 헤더 / 하단 푸터 제거 */
+        header,
+        footer {
+            display: none !important;
+        }
+
+        /* 전체 배경 단색 통일 */
+        html, body {
+            background: #050b1c !important;
+        }
+
+        /* 로그인 영역만 화면 중앙 */
+        main {
+            padding-top: 0 !important;
+        }
+
+        /* 로그인 카드 바깥 배경 글로우 제거 */
+        .auth-wrapper {
+            background: transparent !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 혹시 index.css에서 만든 글로우 제거 */
+        body::before,
+        body::after {
+            content: none !important;
+        }
+
+        /* divider(구분선) 제거 */
+        .divider {
+            display: none !important;
+        }
+    </style>
+
     <section class="auth-wrapper">
         <div class="container">
             <div class="auth-card">

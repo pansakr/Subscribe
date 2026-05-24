@@ -297,3 +297,186 @@
     font-size: 30px;
     color: #e5f4ff;
 }
+
+/* ========================================================================
+   Login page (image style) - 로그인 페이지 전용 스킨
+   적용 조건: .auth-wrapper--login / .auth-card--login
+   ======================================================================== */
+
+.auth-wrapper--login{
+    /* 화면 중앙 정렬 유지(기존 auth-wrapper와 충돌 없이) */
+    position: relative;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+
+    /* 배경을 이미지처럼 "깊은 남색" + 네온 블루 글로우 */
+    background: none;
+}
+
+/* 컨테이너가 카드만 딱 가운데 오도록 */
+.auth-wrapper--login .container{
+    display: flex;
+    justify-content: center;
+}
+
+/* 카드: 글래스 느낌 + 얇은 테두리 + 내부 그림자 */
+.auth-card--login{
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+
+    /* 이미지처럼 카드 안쪽은 더 어둡게 */
+    background: rgba(10, 20, 45, 0.55);
+    border: 1px solid rgba(148,163,184,0.18);
+    border-radius: 18px;
+
+    /* 상단 뱃지가 겹치므로 padding-top을 넉넉히 */
+    padding: 38px 28px 30px;
+
+    /* 글로우 + 소프트 쉐도우 */
+    box-shadow:
+            0 18px 50px rgba(0,0,0,0.55),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+}
+
+/* 폼 간격을 이미지처럼 더 촘촘하게 */
+.auth-card--login .form-row{
+    margin-top: 12px;
+    gap: 8px;
+}
+
+/* 입력창: 어두운 박스 + 얇은 테두리 + 안쪽 그림자 */
+.auth-wrapper--login .form-row input{
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 10px;
+
+    background: rgba(2,6,23,0.65);
+    border: 1px solid rgba(148,163,184,0.18);
+    box-shadow:
+            inset 0 1px 2px rgba(0,0,0,0.55),
+            0 0 0 rgba(0,0,0,0);
+
+    color: rgba(229,231,235,0.92);
+    font-size: 0.92rem;
+}
+
+.auth-wrapper--login .form-row input::placeholder{
+    color: rgba(156,163,175,0.65);
+}
+
+.auth-wrapper--login .form-row input:focus{
+    outline: none;
+    border-color: rgba(56,189,248,0.55);
+    box-shadow:
+            0 0 0 3px rgba(56,189,248,0.14),
+            inset 0 1px 2px rgba(0,0,0,0.55);
+}
+
+/* 로그인 버튼: 이미지처럼 밝은 블루(살짝 그라데이션) + 라운드 */
+.auth-wrapper--login .btn-primary.btn-full{
+    margin-top: 18px;
+    height: 44px;
+    border-radius: 10px;
+
+    background: linear-gradient(180deg, rgba(96,165,250,0.95), rgba(59,130,246,0.95));
+    box-shadow:
+            0 10px 26px rgba(59,130,246,0.25),
+            inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.auth-wrapper--login .btn-primary.btn-full:hover{
+    background: linear-gradient(180deg, rgba(110,175,255,0.98), rgba(50,120,245,0.98));
+}
+
+/* 체크박스/링크 라인: 이미지처럼 더 작고 흐릿하게 */
+.auth-wrapper--login .auth-actions{
+    margin-top: 10px;
+}
+
+.auth-wrapper--login .remember,
+.auth-wrapper--login .link-muted{
+    font-size: 0.82rem;
+    color: rgba(156,163,175,0.75);
+}
+
+.auth-wrapper--login .remember input{
+    transform: scale(0.9);
+}
+
+/* 이미지에는 divider 선이 사실상 안 보임 → 숨김 */
+.auth-wrapper--login .divider{
+    display: none;
+}
+
+/* 소셜 버튼: 어두운 박스 + 얇은 테두리 + 내부 그림자 */
+.auth-wrapper--login .social-login{
+    margin-top: 18px;
+    gap: 12px;
+}
+
+.auth-wrapper--login .btn-social{
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(2,6,23,0.55);
+    border: 1px solid rgba(148,163,184,0.16);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.55);
+}
+
+.auth-wrapper--login .btn-social:hover{
+    background: rgba(2,6,23,0.70);
+    border-color: rgba(148,163,184,0.24);
+}
+
+/* 아이콘 박스는 이미지처럼 작고 둥근 사각형 */
+.auth-wrapper--login .social-icon{
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* 하단 안내 문구 */
+.auth-wrapper--login .auth-footnote{
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: rgba(156,163,175,0.65);
+}
+
+.auth-wrapper--login .auth-footnote a{
+    color: rgba(96,165,250,0.95);
+}
+
+/* =========================================================
+   Auth pages: header/footer 제거 + 배경 단색 통일
+   ========================================================= */
+
+.page-auth {
+    background: #050b1c; /* 배경색 하나로 통일 */
+    min-height: 100vh;
+}
+
+/* 로그인/회원가입 페이지에서는 상단/하단 줄 숨김 */
+.page-auth header,
+.page-auth footer {
+    display: none;
+}
+
+/* header가 사라지니 main 위 여백도 정리 */
+.page-auth main {
+    padding-top: 0;
+}
+
+/* auth-wrapper 자체 배경(글로우) 제거 -> 투명 */
+.page-auth .auth-wrapper--login,
+.page-auth .auth-wrapper--signup {
+    background: transparent !important;
+    min-height: 100vh;          /* 화면 꽉 채움 */
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+

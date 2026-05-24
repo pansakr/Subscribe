@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       th:fragment="layout(content)">
 <head>
     <meta charset="UTF-8">
@@ -24,19 +25,73 @@
     </div>
 
     <nav class="nav">
-<!--        <a th:href="@{/about}">서비스 소개</a>-->
-        <a th:href="@{/ranking}">랭킹</a>
-        <button class="btn-login" onclick="location.href='/login'">로그인</button>
+        <nav class="nav">
+            <a th:href="@{/about}">서비스 소개</a>
+            <a th:href="@{/ranking}">랭킹</a>
+
+            <!-- 비로그인 -->
+            <button class="btn-login"
+                    sec:authorize="isAnonymous()"
+                    onclick="location.href='/login'">
+                로그인
+            </button>
+
+            <!-- 로그인 -->
+            <div class="user-menu"
+                 sec:authorize="isAuthenticated()">
+
+                <!-- 이메일(토글 버튼) -->
+                <button type="button"
+                        class="user-trigger"
+                        id="userMenuTrigger"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    <span class="user-email" sec:authentication="principal.email">user@email.com</span>
+                    <span class="user-caret" aria-hidden="true">▾</span>
+                </button>
+
+                <!-- 드롭다운 -->
+                <div class="user-dropdown"
+                     id="userMenuDropdown"
+                     role="menu"
+                     aria-labelledby="userMenuTrigger">
+
+                    <div class="user-dropdown-header">
+                        <span class="user-dropdown-email" sec:authentication="principal.email">user@email.com</span>
+                    </div>
+
+                    <a class="user-item" th:href="@{/me}" role="menuitem">
+                        <span class="user-ico" aria-hidden="true">👤</span>
+                        내 정보
+                    </a>
+
+                    <a class="user-item" th:href="@{/subscriptions}" role="menuitem">
+                        <span class="user-ico" aria-hidden="true">📦</span>
+                        구독 정보
+                    </a>
+
+                    <div class="user-divider"></div>
+
+                    <!-- 로그아웃 -->
+                    <form th:action="@{/logout}" method="post" class="logout-form" role="none">
+                        <input type="hidden"
+                               th:if="${_csrf != null}"
+                               th:name="${_csrf.parameterName}"
+                               th:value="${_csrf.token}" />
+                        <button type="submit" class="user-item user-logout" role="menuitem">
+                            <span class="user-ico" aria-hidden="true">🚪</span>
+                            로그아웃
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
     </nav>
 </header>
 
 <main>
     <div th:insert="${content}"></div>
 </main>
-
-<footer>
-    © 2025 SubTrack — 구독 관리 서비스
-</footer>
 
 <script th:src="@{/js/main.js}" defer></script>
 <script th:src="@{/js/modal.js}"></script>

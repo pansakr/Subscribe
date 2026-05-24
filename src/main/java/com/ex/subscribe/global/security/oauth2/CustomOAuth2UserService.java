@@ -68,6 +68,7 @@ public class CustomOAuth2UserService extends OidcUserService {
                 oidcUser.getIdToken(),
                 oidcUser.getUserInfo(), // todo : getUserInfo = null 해결 필요
                 userEntity.getId(),
+                userEntity.getEmail(),
                 List.of(userEntity.getRole().name()));
     }
 }

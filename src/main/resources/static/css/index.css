@@ -471,3 +471,136 @@ footer {
     from { opacity: 0; transform: translateY(-6px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+/* =======================
+   Header User Dropdown
+======================= */
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    cursor: pointer;
+
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.user-trigger:hover {
+    background: #1e293b;
+}
+
+.user-email {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
+}
+
+.user-caret {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+
+    width: 240px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+
+    padding: 10px;
+    z-index: 3000;
+
+    /* 기본은 숨김 */
+    display: none;
+}
+
+.user-dropdown.is-open {
+    display: block;
+}
+
+.user-dropdown-header {
+    padding: 10px 10px 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 6px;
+}
+
+.user-dropdown-email {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 10px;
+
+    color: var(--text);
+    font-size: 0.92rem;
+    text-decoration: none;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.user-item:hover {
+    background: #0d1321;
+}
+
+.user-ico {
+    width: 18px;
+    display: inline-flex;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+.user-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 6px;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.user-logout {
+    color: #fecaca; /* 살짝 경고 톤 */
+}
+
+.user-logout:hover {
+    background: rgba(248, 113, 113, 0.12);
+}
+
+/* 모바일에서 이메일 너무 길면 줄이기 */
+@media (max-width: 480px) {
+    .user-email {
+        max-width: 140px;
+    }
+}

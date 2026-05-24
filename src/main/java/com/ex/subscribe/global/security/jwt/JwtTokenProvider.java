@@ -32,13 +32,14 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
-    public String createAccessToken(Long userId, List<String> roles){
+    public String createAccessToken(Long userId, String email, List<String> roles){
         Instant now = Instant.now();
         Instant exp = now.plus(Duration.ofMinutes(accessTime));
 
         return Jwts.builder()
                 .setSubject(String.valueOf(userId))
                 .claim("roles", roles)
+                .claim("email", email)
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(exp))
                 .signWith(key(), SignatureAlgorithm.HS256)
@@ -59,14 +60,14 @@ public class JwtTokenProvider {
     public Authentication toAuthentication(Claims claims){
 
         Long userId = Long.valueOf(claims.getSubject());
-
         List<String> roles = claims.get("roles", List.class);
+        String email = claims.get("email", String.class);
 
         List<SimpleGrantedAuthority> authorities = roles.stream()
                 .map(SimpleGrantedAuthority::new)
                 .toList();
 
-        UserPrincipal principal = new UserPrincipal(userId, roles, authorities);
+        UserPrincipal principal = new UserPrincipal(userId, email, roles, authorities);
 
         // UsernamePasswordAuthenticationToken 말고 다른 인증 객체는 안됨?
        return new UsernamePasswordAuthenticationToken(principal, claims, authorities);

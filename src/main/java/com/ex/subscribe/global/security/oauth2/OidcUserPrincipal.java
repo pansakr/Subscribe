@@ -13,15 +13,19 @@ import java.util.List;
 public class OidcUserPrincipal extends DefaultOidcUser {
 
     private final Long userId;
+    private final String email;
+
     private final List<String> roles;
 
     public OidcUserPrincipal(Collection<? extends GrantedAuthority> authorities,
                              OidcIdToken idToken,
                              OidcUserInfo userInfo,
                              Long userId,
+                             String email,
                              List<String> role) {
         super(authorities, idToken, userInfo);
         this.userId = userId;
+        this.email = email;
         this.roles = role;
     }
 
